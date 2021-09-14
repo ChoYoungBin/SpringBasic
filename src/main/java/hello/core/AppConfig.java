@@ -8,37 +8,29 @@ import hello.core.member.service.MemberService;
 import hello.core.member.service.MemberServiceImpl;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-
+@Configuration
 public class AppConfig {
 
-    //역할
-    //DIP 원칙 해결
+    @Bean
     public MemberService memberService(){
-        //구현 & 역할
         return new MemberServiceImpl(memberRepository());
     }
 
-    //역할
+    @Bean
     public OrderService orderService(){
-        //구현 & 역할
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
-    //역할
+    @Bean
     public MemberRepository memberRepository() {
-        //구현
         return new MemoryMemberRepository();
     }
 
-    //역할
+    @Bean
     public DiscountPolicy discountPolicy(){
-        //구현
-        /**
-         * 구현쪽에서만 수정하면 client code의 변경사항 없이 대응가능
-         */
-        //OCP 원칙 해결
-        //return new FixDiscountPolicy();
         return new RateDiscountPolicy();
     }
 }
