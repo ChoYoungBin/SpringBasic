@@ -1,22 +1,25 @@
 package hello.core.order;
 
-import hello.core.member.Grade;
-import hello.core.member.Member;
-import hello.core.member.MemberSerivce;
-import hello.core.member.MemberServiceImpl;
+import hello.core.AppConfig;
+import hello.core.member.domain.Grade;
+import hello.core.member.domain.Member;
+import hello.core.member.service.MemberService;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderServiceTests {
-    private MemberSerivce memberSerivce = new MemberServiceImpl();
-    private OrderService orderService = new OrderServiceImpl();
+
+    AppConfig appConfig = new AppConfig();
+    private MemberService memberService = appConfig.memberService();
+    private OrderService orderService = appConfig.orderService();
+
     @Test
-    void order(){
+    void test_order_returnsMember(){
         //given
         long memberId = 1L;
         Member member = new Member(memberId, "nameA", Grade.VIP);
-        memberSerivce.join(member);
+        memberService.join(member);
 
         //when
         Order order = orderService.order(memberId, "ItemA", 10000);

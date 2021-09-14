@@ -1,6 +1,6 @@
 package hello.core.discount;
 
-import hello.core.member.Member;
+import hello.core.member.domain.Member;
 
 public interface DiscountPolicy {
 

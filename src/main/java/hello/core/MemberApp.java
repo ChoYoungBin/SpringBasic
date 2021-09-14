@@ -1,18 +1,18 @@
 package hello.core;
 
-import hello.core.member.Grade;
-import hello.core.member.Member;
-import hello.core.member.MemberSerivce;
-import hello.core.member.MemberServiceImpl;
-import org.springframework.util.Assert;
+import hello.core.member.domain.Grade;
+import hello.core.member.domain.Member;
+import hello.core.member.service.MemberService;
 
 public class MemberApp {
     public static void main(String[] args) {
-        MemberSerivce memberSerivce = new MemberServiceImpl();
-        Member member = new Member(1L, "memberA", Grade.VIP);
-        memberSerivce.join(member);
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
 
-        Member member1 = memberSerivce.findMember(1L);
+        Member member = new Member(1L, "memberA", Grade.VIP);
+        memberService.join(member);
+
+        Member member1 = memberService.findMember(1L);
 
         System.out.println("new Member = " + member.getName());
         System.out.println("find Member = " + member1.getName());
