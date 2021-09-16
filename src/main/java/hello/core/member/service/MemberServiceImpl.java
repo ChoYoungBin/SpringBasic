@@ -23,4 +23,9 @@ public class MemberServiceImpl implements MemberService {
 
         return memberRepository.findById(memberId);
     }
+
+    //Todo delete later
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }

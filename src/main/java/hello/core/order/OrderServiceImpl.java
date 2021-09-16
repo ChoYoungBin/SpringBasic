@@ -22,4 +22,9 @@ public class OrderServiceImpl implements OrderService {
 
         return new Order(member.getId(), product, price, discount);
     }
+
+    //Todo delete later
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
