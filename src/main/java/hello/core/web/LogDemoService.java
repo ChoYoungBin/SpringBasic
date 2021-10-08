@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class LogDemoService {
-    private final ObjectProvider<MyLogger> loggerProvider;
+    private final MyLogger myLogger;
 
     public void logic(String id) {
-        MyLogger logger = loggerProvider.getObject();
-        logger.log("service id =  " + id);
+
+        myLogger.log("service id =  " + id);
     }
 }
